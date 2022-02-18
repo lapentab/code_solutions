@@ -10,8 +10,6 @@ def minimumOperations(nums):
         print( str(arr))
         num1=int("".join(arr[::2]))
         num2=int("".join(arr[1::2]))
-        print(str(num1))
-        print(str(num2))
         return num1+num2
     
     
@@ -38,24 +36,20 @@ def minCostSetTime(startAt, moveCost, pushCost, targetSeconds):
         s= str(startAt) + s
         cost+=sum([0 if s[i] == s[i+1] else 1 for i in range(0, len(s)-1)])*moveCost
         return cost
-    print('minute ' + str(minute) + ' seconds ' + str(seconds) + " modmin " + str(modMin) + ' modSec ' + str(modSec))
     if modSec > 99 or modMin < 0:
         modCost = None
     else:
         modString = str(modMin) + str(modSec)
         modCost = getCost(modString)
-        print("MS %s" % modString)
         
     if targetSeconds > 99:
         secCost = None
     else:
         secString = str(targetSeconds)
         secCost= getCost(secString)
-        print ("SS %s" % secString)
     if minute>99:
         minCost = None
     else:
-        minString = (str(minute) + "%02d" % seconds).lstrip('0')
         print(minString)
         minCost = getCost(minString)
     return min([items for items in [secCost, minCost, modCost] if items !=None])
